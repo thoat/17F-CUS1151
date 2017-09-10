@@ -68,19 +68,4 @@ public class ListQueue {
 		else
 			return front.data;
 	}
-	
-	public String traverseToString(){
-		String result = "";
-		Node current = front;
-		while (current != null) {//while queue still has element(s)
-			result += current.data;
-			if (current.next != null)
-				result += ", ";
-			else 
-				result += ".";
-			current = current.next;
-		}
-		return result;
-	}
-
 }

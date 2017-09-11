@@ -1,0 +1,78 @@
+
+---- Q5 --------------------------------------
+public Stack copyStack(Stack stack1) {
+	create an empty queue;
+	create an empty stack called stack2;
+	current = stack1.top;  //the order in stack1 is now: [bottom] A, B, C, D [top]
+	while stack1 is not empty {
+		pop elements from stack1 one-by-one and enqueue them;  //the order in queue is now: [front] D, C, B, A [back]
+	}
+	while queue is not empty {
+		dequeue elements one-by-one and push them back into stack1;  //the order in stack1 is now: [bottom] D, C, B, A [top]
+	}
+	while stack1 is not empty {
+		pop elements from stack1 one-by-one and enqueue them;  //the order in queue is now: [front] A, B, C, D [back] 
+	}
+	while queue is not empty {
+		dequeue elements one-by-one and push them into both stack1 and stack2;  //the order in both stacks is now: [bottom] A, B, C, D [top]
+	}
+	return stack2;
+}
+
+---- Q6 --------------------------------------
+public boolean equals(Stack stack1, Stack stack2) {
+	if stack1 and stack 2 are both empty
+		return true;
+	else if they are not both empty AND their sizes differ
+		return false;
+	else {   //they are not both empty and they have the same size
+		create an empty stack called auxStack;
+		create a boolean variable named equalVal and set it to TRUE;
+		while (neither stack1 nor stack2 is empty AND equalVal remains TRUE) {
+			equalVal = stack1.peek().equals(stack2.peek());
+			if equalVal is TRUE {
+				pop one element from stack1 and push it to auxStack;
+				pop one element from stack2 and push it to auxStack;
+			}
+		}
+		while auxStack is not empty {  
+			pop one element from auxStack and push it back to stack2; //restore stack2 to its original state
+			pop one element from auxStack and push it back to stack1; //restore stack1 to its original state
+		}
+		return equalVal;
+	}
+}
+
+---- Q7 --------------------------------------
+/* rearranges the queue so that all even values appear before the odd values */
+/* the gist of this method is: first, store the odds into the stack to separate them from the evens; second, store them back and forth between queue and stack to reorder them;
+third, re-enqueue them.) */
+public Queue rearrange(Queue q) {  //given a queue of: [front] 3, 5, 4, 17, 6, 1 [back]
+	create an empty Stack s;
+	
+	//this block will result in q: [front] 4, 6 [back] and s: [bottom] 3, 5, 17, 1 [top]
+	for size of q {
+		dequeue elements one-by-one;
+		if odd, push them to s;
+		if even, enqueue them back at the end of q; 
+	}
+	
+	//this block will result in q: [front] 4, 6, 1, 17, 5, 3 [bottom] and an empty s
+	for size of s {
+		pop elements one-by-one and enqueue them back at the end of q; 
+	}
+	
+	//this block will result in q: [front] 4, 6 [back] and s: [bottom] 1, 17, 5, 3 [top]
+	for size of q {
+		dequeue elements one-by-one;
+		if odd, push them to s;
+		if even, enqueue them back at the end of q; 
+	}
+	
+	//this block will result in q: [front] 4, 6, 3, 5, 17, 1 [bottom] and an empty s
+	for size of s {
+		pop elements one-by-one and enqueue them back at the end of q; 
+	}
+	
+	return q;
+}

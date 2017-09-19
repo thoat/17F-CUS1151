@@ -76,3 +76,68 @@ public Queue rearrange(Queue q) {  //given a queue of: [front] 3, 5, 4, 17, 6, 1
 	
 	return q;
 }
+
+---- Q8 --------------------------------------
+/* public boolean isPalindrome(Queue q) {
+	if q is empty or q has only one element
+		return true;
+	
+	create an empty Stack s;
+	create an integer called originalQueueSize that stores the original size of q;
+
+	//creating a "mirror" of q in the stack
+	for i from 0 to originalQueueSize {
+		dequeue an element from q and, at the same time, enqueue it to the back of q as well as push it to s;
+	}
+
+	//now compare the "mirror" with q
+	create a boolean value bool and set it to true;
+	while s is not empty {
+		dequeue one element from q and assign it to a;
+		pop one element from s and assign it to b;
+		if (a != b)
+			bool = false;
+		enqueue a back to q;
+	}
+
+	//return the result
+	return bool;
+}
+
+---- Q9 --------------------------------------
+/* public Stack shift(Stack a, int numShifts) {
+	if (s.size() == 0 || s.size() == 1)
+		return s;
+	create an empty Queue q;
+	create an integer called numKeeps that equals size of s minus numShifts;
+	
+	//let's say our stack is: bottom [5, 7, 4, -2, 0, 16, 20] top
+	//numShifts = 3
+	//numKeeps = 7 - 3 = 4
+	
+	
+	//this will modify s: bottom [5, 7, 4] top
+	//and modify q: front [20, 16, 0, -2] back
+	for integer i from 1 to numKeeps {
+		pop element-by-element from s and enqueue;
+		increment i;
+	}
+	
+	//this will empty q and modify s: bottom [5, 7, 4, 20, 16, 0, -2] top
+	while q is not empty {
+		dequeue element-by-element from q and push to s;
+	}
+	
+	//this will empty s and modify q: front [-2, 0, 16, 20, 4, 7, 5] back
+	while s is not empty {
+		pop element-by-element from s and enqueue;
+	}
+	
+	//this will empty q and give us the desired s: bottom [-2, 0, 16, 20, 4, 7, 5] top 
+	while q is not empty {
+		dequeue element-by-element from q and push to s;
+	}
+	
+	return s;
+
+}

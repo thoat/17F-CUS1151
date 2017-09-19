@@ -21,3 +21,6 @@ Thu, 2017.09.07:
 
 Sun, 2017.09.10:
 * Questions 5,6,7 done (still need a careful review, though).
+
+Tue, 2017.09.19:
+* Question 8,9 done (believed to compute correctly, but may need to refine the language used)

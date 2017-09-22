@@ -1,0 +1,238 @@
+---- CUS 1151 ASSIGNMENT 1 -------
+--- Nova Aftab, Thoa Ta ---
+
+Problem 1
+public int maxCount() {
+	if ( list.isEmpty() == true )
+	{
+		return 0;
+	}
+	else if ( list.size() == 1)
+	{
+		return 1;
+	}
+	else {
+		int numOfOccurrence = 1;
+		int maxCount = 1;
+		for( int i = 1; i < list.size; i ++)
+		{ 
+			if (int [i] == int [i -1])
+				numOfOccurrences ++;
+			else
+				{
+					if ( numOfOccurences > maxCount )
+						maxCount = numOfOccurrences;
+					numOfOccurences = 1;	
+				}
+		}
+		return maxCount;
+	}
+}
+
+Problem 2
+//the method take in a list 
+public int longestSortedSequence() 
+{
+	//makes a counter and sets it to 1
+	int count = 1;
+	//if the list is empty it will return 0  
+	if (list.size() == 0)
+		return 0;
+	else 
+	{
+		int currentMaxLength = 1;
+		
+		//for loop to go through the list starting at one
+		for (int i = 1; i < list.size(); i++)
+		{
+				//everytime the number before i is smaller than i, count ++ 
+				//and when it is not it turns it back to 1
+				if(list[i] > list[i – 1])
+				{
+						count ++;
+				}
+				
+				else 
+				{
+					//before we reset count, we want to update the currentMaxLength
+					if (count > currentMaxLength)
+						currentMaxLength = count;
+					count = 1;
+				}
+		}
+		return count ;
+	}
+}
+
+Problem 3.
+public ArrayIntList runningTotal() {
+	ArrayIntList list2 = new ArrayIntList();
+	
+	//if original list is empty, return a new empty list
+	if (list.isEmpty())
+		return list2;
+		
+	//if original list is NOT empty, walk through it and compute the running sum	
+	int sum = 0;
+	for (int i=0; i < list.size(); i++) {
+		sum = sum + list[i];
+		list2.add(sum);
+	}
+	return list2;
+}
+
+Problem 4.
+//takes in a list 
+public boolean isPairWiseSorted()
+{
+	// starts at int i and goes up by 2 	
+	for(int i = 0; i < list.size()/2; i++) {
+		if !(list[2i] < list[2i + 1]) 
+			return false;
+	}
+	return true;
+}
+
+
+---- Q5 --------------------------------------
+public Stack copyStack(Stack stack1) {
+	create an empty queue;
+	create an empty stack called stack2;
+	current = stack1.top;  //the order in stack1 is now: [bottom] A, B, C, D [top]
+	while stack1 is not empty {
+		pop elements from stack1 one-by-one and enqueue them;  //the order in queue is now: [front] D, C, B, A [back]
+	}
+	while queue is not empty {
+		dequeue elements one-by-one and push them back into stack1;  //the order in stack1 is now: [bottom] D, C, B, A [top]
+	}
+	while stack1 is not empty {
+		pop elements from stack1 one-by-one and enqueue them;  //the order in queue is now: [front] A, B, C, D [back] 
+	}
+	while queue is not empty {
+		dequeue elements one-by-one and push them into both stack1 and stack2;  //the order in both stacks is now: [bottom] A, B, C, D [top]
+	}
+	return stack2;
+}
+
+---- Q6 --------------------------------------
+public boolean equals(Stack stack1, Stack stack2) {
+	if stack1 and stack 2 are both empty
+		return true;
+	else if they are not both empty AND their sizes differ
+		return false;
+	else {   //they are not both empty and they have the same size
+		create an empty stack called auxStack;
+		create a boolean variable named equalVal and set it to TRUE;
+		while (neither stack1 nor stack2 is empty AND equalVal remains TRUE) {
+			equalVal = stack1.peek().equals(stack2.peek());
+			if equalVal is TRUE {
+				pop one element from stack1 and push it to auxStack;
+				pop one element from stack2 and push it to auxStack;
+			}
+		}
+		while auxStack is not empty {  
+			pop one element from auxStack and push it back to stack2; //restore stack2 to its original state
+			pop one element from auxStack and push it back to stack1; //restore stack1 to its original state
+		}
+		return equalVal;
+	}
+}
+
+---- Q7 --------------------------------------
+/* rearranges the queue so that all even values appear before the odd values */
+/* the gist of this method is: first, store the odds into the stack to separate them from the evens; second, store them back and forth between queue and stack to reorder them;
+third, re-enqueue them.) */
+public Queue rearrange(Queue q) {  //given a queue of: [front] 3, 5, 4, 17, 6, 1 [back]
+	create an empty Stack s;
+	
+	//this block will result in q: [front] 4, 6 [back] and s: [bottom] 3, 5, 17, 1 [top]
+	for size of q {
+		dequeue elements one-by-one;
+		if odd, push them to s;
+		if even, enqueue them back at the end of q; 
+	}
+	
+	//this block will result in q: [front] 4, 6, 1, 17, 5, 3 [bottom] and an empty s
+	for size of s {
+		pop elements one-by-one and enqueue them back at the end of q; 
+	}
+	
+	//this block will result in q: [front] 4, 6 [back] and s: [bottom] 1, 17, 5, 3 [top]
+	for size of q {
+		dequeue elements one-by-one;
+		if odd, push them to s;
+		if even, enqueue them back at the end of q; 
+	}
+	
+	//this block will result in q: [front] 4, 6, 3, 5, 17, 1 [bottom] and an empty s
+	for size of s {
+		pop elements one-by-one and enqueue them back at the end of q; 
+	}
+	
+	return q;
+}
+
+---- Q8 --------------------------------------
+public boolean isPalindrome(Queue q) {
+	if q is empty or q has only one element
+		return true;
+	
+	create an empty Stack s;
+	create an integer called originalQueueSize that stores the original size of q;
+
+	//creating a "mirror" of q in the stack
+	for i from 0 to originalQueueSize {
+		dequeue an element from q and, at the same time, enqueue it to the back of q as well as push it to s;
+	}
+
+	//now compare the "mirror" with q
+	create a boolean value bool and set it to true;
+	while s is not empty {
+		dequeue one element from q and assign it to a;
+		pop one element from s and assign it to b;
+		if (a != b)
+			bool = false;
+		enqueue a back to q;
+	}
+
+	//return the result
+	return bool;
+}
+
+---- Q9 --------------------------------------
+public Stack shift(Stack s, int numShifts) {
+	if (s.size() == 0 || s.size() == 1)
+		return s;
+	create an empty Queue q;
+	create an integer called numKeeps that equals size of s minus numShifts;
+	
+	//let's say our stack is: bottom [5, 7, 4, -2, 0, 16, 20] top
+	//numShifts = 3
+	//numKeeps = 7 - 3 = 4
+	
+	
+	//this will modify s: bottom [5, 7, 4] top
+	//and modify q: front [20, 16, 0, -2] back
+	for integer i from 1 to numKeeps {
+		pop element-by-element from s and enqueue;
+		increment i;
+	}
+	
+	//this will empty q and modify s: bottom [5, 7, 4, 20, 16, 0, -2] top
+	while q is not empty {
+		dequeue element-by-element from q and push to s;
+	}
+	
+	//this will empty s and modify q: front [-2, 0, 16, 20, 4, 7, 5] back
+	while s is not empty {
+		pop element-by-element from s and enqueue;
+	}
+	
+	//this will empty q and give us the desired s: bottom [-2, 0, 16, 20, 4, 7, 5] top 
+	while q is not empty {
+		dequeue element-by-element from q and push to s;
+	}
+	return s;
+}
+
+

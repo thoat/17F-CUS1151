@@ -29,7 +29,7 @@ public class QueueTest {
 	public static void main(String[] args){
 		testEmpty(new ListQueue(),new JavaQueue());
 		testOne(new ListQueue(),new JavaQueue());
-		//testMany(new ListQueue(),new JavaQueue());
+		testMany(new ListQueue(),new JavaQueue());
 			
 	}
 	
@@ -84,21 +84,55 @@ public class QueueTest {
 		return evaluateTestResults(frontTest, dequeueTest, enqueueTest);
 	}
 	
-	/*public static boolean testMany(ListQueue a, JavaQueue b){
+	public static boolean testMany(ListQueue a, JavaQueue b){
 		//TODO implement a test of the three functions when the queues have many elements
 		//Compare the result of your queue  against the java implementation
 		//More than one test may be necessary
 		
 		//add 10 or more elements in each queue first
+		a.enqueue("hello");
+		a.enqueue("world");
+		a.enqueue("this");
+		a.enqueue("is");
+		a.enqueue("a");
+		a.enqueue("wonderful");
+		a.enqueue("rainy");
+		a.enqueue("windy");
+		a.enqueue("day");
+		a.enqueue("today");
 		
-		//test enqueue(String a)
-
-		//test dequeue()
+		b.enqueue("hello");
+		b.enqueue("world");
+		b.enqueue("this");
+		b.enqueue("is");
+		b.enqueue("a");
+		b.enqueue("wonderful");
+		b.enqueue("rainy");
+		b.enqueue("windy");
+		b.enqueue("day");
+		b.enqueue("today");
+		
+		//starting the test
+		System.out.println("Test methods on queue with many elements:");
+		boolean frontTest, dequeueTest, enqueueTest;
 		
 		//test front()
+		String yourFString = a.front();
+		String correctFString = b.front();
+		frontTest = yourFString.equals(correctFString);
+		
+		//test dequeue()
+		String yourDString = a.dequeue();
+		String correctDString = b.dequeue();
+		dequeueTest = yourDString.equals(correctDString);
+		
+		//test enqueue(String a)
+		a.enqueue("goodbye");
+		b.enqueue("goodbye");
+		enqueueTest = checkEquals(a, b);
 		
 		return evaluateTestResults(frontTest, dequeueTest, enqueueTest);
-	}*/
+	}
 	
 	private static boolean checkEquals(ListQueue a, JavaQueue b) {
 		String actual = "";

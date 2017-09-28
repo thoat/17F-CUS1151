@@ -26,3 +26,15 @@ Tue, 2017.09.19:
 * Questions 8,9 done (believed to compute correctly, but may need to refine the language used)
 * Questions 2,3,4 done
 * Revised all question answers and submitted.
+
+## Homework: Project 2
+We started on Thursday, 2017.09.28.
+
+Thu, 2017.09.28:
+* We added 2 more methods to private class `HeapData`: method `getData()` and method `getPriority()`.
+* We filled in the body for:
+  * default constructor and user-defined constructor
+  * `isEmpty()`, `size()`, `findMin()`, and `makeEmpty()`
+* We are still working on `insert()`, `deleteMin()`, and `changePriority()`. 
+* However, we still have some questions about how to approach `findMin()`, `makeEmpty()`, `insert()`, `deleteMin()`, and `changePriority()`.
+* We have not touched on the Test class yet. 

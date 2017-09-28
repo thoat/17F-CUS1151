@@ -12,7 +12,14 @@ public class BinaryHeap implements PriorityQueue{
 		protected void changePriority(int newPri){
 			priority = newPri;
 		}
-		// Add additional functions here as necessary
+		
+                public String getData() {
+                    return data;
+                }
+                
+                public int getPriority() {
+                    return priority;
+                }
 		
 	}
 	
@@ -22,39 +29,76 @@ public class BinaryHeap implements PriorityQueue{
 	private int size;
 	
 	public BinaryHeap(){
-		//TODO BinaryHeap constructor
+            size = 0;    
+            heap = new HeapData[size];
 	}
 	
 	public BinaryHeap(int startArray){
-		//TODO this constructor should set the start size of your heap array to startArray
+            size = startArray;    
+            heap = new HeapData[size];
 	}
 	
 	public boolean isEmpty(){
-		//TODO implement isEmpty
-		return true;
+            if (size == 0) 
+                return true;
 	}
 	
 	public int size(){
-		//TODO implement size
-		return 0;
+            return size;
 	}
 	
 	public String findMin(){
-		//TODO implement findMin
-		return null;
+            String result = heap[1].getData();
+            return result;
 	}
 	
 	public void insert(String data, int priority){
-		//TODO implement insert
+            //TODO implement insert
+            
+            HeapData newElement = new HeapData(data, priority);
+            
+            //if the heap is empty, insert into index 1
+            if (isEmpty()) {
+                heap[1] = newElement;
+            }
+            //else, add to the last leaf and bubble up as needed
+            else {
+                //add to the last leaf
+                
+                
+                //while my parent is greater than me, i will keep switching up
+                
+            }
+            
+
 	}
 	
 	public String deleteMin(){
 		//TODO implement deleteMin
-		return null;
+            String result = heap[1].getData();
+            
+            //move the last element to the root
+            heap[1] = heap[size - 1];
+            size--;
+            
+            //and bubble down if I am greater than my children
+            while (me > mychilren) {
+                HeapData leftChild = heap[myIndex * 2];
+                HeapData rightChild = heap[myIndex * 2 + 1];
+                HeapData smallerChild = Math.min(leftChild.getPriority(), rightChild.getPriority());
+                HeapData temp = heap[myIndex];
+                heap[myIndex]= smallerChild;
+                heap[smallerChild.getIndex] = temp;
+            }
+            return result;
 	}
 	
 	public void makeEmpty(){
-		//TODO implement makeEmpty
+            //remove all the elements and set size to 0
+            for (int i = 1; i < size; i++) {
+                heap[i] = null;
+            }
+            size = 0;
 	}
 	
 	public boolean changePriority(String data, int newPri){

@@ -38,9 +38,12 @@ public class BinaryHeap implements PriorityQueue{
             heap = new HeapData[size];
 	}
 	
-	public boolean isEmpty(){
+	public boolean isEmpty()
+        {
             if (size == 0) 
                 return true;
+            else
+                return false;
 	}
 	
 	public int size(){
@@ -102,7 +105,19 @@ public class BinaryHeap implements PriorityQueue{
 	}
 	
 	public boolean changePriority(String data, int newPri){
-		//TODO implement changePriority
+		//goes through loop to see if there the string that is inserted exists
+                //if it exists then change priority to new priority
+                for( int i = 1; i <= size ; i++)
+                {
+                    if(data.equals(heap[i].getData()))
+                    {
+                        heap[i].changePriority(newPri);
+                        //SWAP till it is in the correct position
+                        
+                        return true;
+                              
+                    }    
+                }
 		return false;
 	}
 

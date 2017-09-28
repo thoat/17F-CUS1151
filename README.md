@@ -33,8 +33,6 @@ We started on Thursday, 2017.09.28.
 Thu, 2017.09.28:
 * We added 2 more methods to private class `HeapData`: method `getData()` and method `getPriority()`.
 * We filled in the body for:
-  * default constructor and user-defined constructor
-  * `isEmpty()`, `size()`, `findMin()`, and `makeEmpty()`
-* We are still working on `insert()`, `deleteMin()`, and `changePriority()`. 
-* However, we still have some questions about how to approach `findMin()`, `makeEmpty()`, `insert()`, `deleteMin()`, and `changePriority()`.
+  * default constructor and user-defined constructor. We set default length to 16.
+  * `isEmpty()`, `size()`, `findMin()`, `makeEmpty()`, `insert()`, `deleteMin()`, and `changePriority()`. 
 * We have not touched on the Test class yet. 

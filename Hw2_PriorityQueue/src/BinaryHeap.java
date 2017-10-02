@@ -87,7 +87,9 @@ public class BinaryHeap implements PriorityQueue{
                 size++;
                 
                 //while my parent is greater than me, i will keep switching up
-                int indexForNewElement = percolateUp(size, priority);
+		//this function is to find the appropriate index for the new node 
+		//given its current postion ("size" - the last leaf) and its priority value
+                int indexForNewElement = percolateUp(size, priority);   
                 heap[indexForNewElement] = newElement; 
             }
 	}
@@ -101,12 +103,15 @@ public class BinaryHeap implements PriorityQueue{
         }
         
 	public String deleteMin(){
-		//TODO implement deleteMin
+		
             if (isEmpty())
                 return null;
             String result = heap[1].getData();
             
-            int newIndexForLastElement = percolateDown(1, heap[size].getPriority());
+	    //the last node is placed at the top, and now have to bubble down
+            //this function is to find the appropriate index for it 
+	    //given its current postion (1 - the top) and its priority value	
+	    int newIndexForLastElement = percolateDown(1, heap[size].getPriority());
             heap[newIndexForLastElement] = heap[size];
             size--;
             return result;
@@ -135,12 +140,14 @@ public class BinaryHeap implements PriorityQueue{
                 int rightChild = leftChild + 1;
                 int targetIndex;
                 
-                //if my left child is smaller, or if I don't have a right child
+                //if my left child is smaller than the right child, or if I don't have a right child
                 if (heap[leftChild].getPriority() < heap[rightChild].getPriority() 
                     || rightChild > size)
                     targetIndex = leftChild;
                 else
                     targetIndex = rightChild;
+		
+		//compare myself with the smaller child, to see if we need to swap
                 if (heap[targetIndex].getPriority() < myPriority) {
                     heap[myIndex] = heap[targetIndex];
                     myIndex = targetIndex;
@@ -157,7 +164,7 @@ public class BinaryHeap implements PriorityQueue{
             heap = newHeap;
 	}
 	
-        //if a HeapData changes its priority, will it be re-positioned in the heap?
+        //if a HeapData changes its priority, it will be re-positioned in the heap
 	public boolean changePriority(String data, int newPri){
 		//goes through loop to see if there the string that is inserted exists
                 //if it exists then change priority to new priority
@@ -166,10 +173,20 @@ public class BinaryHeap implements PriorityQueue{
                     if(data.equals(heap[i].getData()))
                     {
                         heap[i].changePriority(newPri);
-                        //SWAP till it is in the correct position
                         
-                        return true;
-                              
+			//SWAP up till it is in the correct position
+			if ((i/2 >= 1) && (newPri < heap[i/2].getPriority())) {
+				int updatedIndex = percolateUp(i, newPri);   
+               			heap[updatedIndex] = new HeapData(data, newPri); 
+			}
+			
+			
+			//SWAP down till it is in the correct position
+			if ((2i <= size) && (newPri > heap[2i].getPriority())) {
+				int updatedIndex = percolateDown(i, newPri);
+				heap[updatedIndex] = new HeapData(data, newPri);
+			}
+                        return true;     
                     }    
                 }
 		return false;

@@ -6,17 +6,14 @@ public abstract class BinaryHeapTest {
 		// Call your tests here to make sure that your implementation works.
 		// This section will not be graded
 		
-		BinaryHeap myEmptyHeap = new BinaryHeap();
-		
-		testEmptyHelper(myEmptyHeap);
-		
-		//testOone(new BinaryHeap())
+		testEmptyHelper(new BinaryHeap());
+		testOneHelper(new BinaryHeap());
 		
 		//testMany(new BinaryHeap())
 
 	}
 	
-	private void testEmptyHelper(BinaryHeap toTest) {
+	private static void testEmptyHelper(BinaryHeap toTest) {
 		if (testEmpty(toTest))
 			System.out.println("Test empty: successful.");
 		else
@@ -24,7 +21,7 @@ public abstract class BinaryHeapTest {
 			
 	}
 	
-	private void testOneHelper(BinaryHeap toTest) {
+	private static void testOneHelper(BinaryHeap toTest) {
 		if (testOne(toTest))
 			System.out.println("Test empty: successful.");
 		else
@@ -37,7 +34,7 @@ public abstract class BinaryHeapTest {
 	//Only applicable functions need to be tested at each level.
 	//Helper tests are strongly recommended
 	
-	public boolean testEmpty(BinaryHeap toTest){
+	public static boolean testEmpty(BinaryHeap toTest){
 		//TODO write a test case that tests functionality for all of the functions applicable to a BinaryHeap when it is empty
 		//toTest should be empty when it is called
 		//You may find writing helper tests to be useful
@@ -53,13 +50,13 @@ public abstract class BinaryHeapTest {
 		while (!(toTest.isEmpty())) {
 			actual += toTest.deleteMin() + ", "; 
 		}
-		boolean three = (actual.equals("first word, ");
+		boolean three = (actual.equals("first word, "));
 		
 		return (one && two && three);
 		
 	}
 	
-	public boolean testOne(BinaryHeap toTest){
+	public static boolean testOne(BinaryHeap toTest){
 		//TODO write a test case that tests functionality for all of the functions applicable to a BinaryHeap when it has one element
 		//Add the element in this function, toTest should be empty when it is called.
 		toTest.insert("first word", 2);
@@ -77,7 +74,7 @@ public abstract class BinaryHeapTest {
 		
 		//deleteMin()
 		String deleted = toTest.deleteMin();
-		boolean four = (deleted.equals("first word");
+		boolean four = (deleted.equals("first word"));
 				
 		//insert(String data, int priority)
 		toTest.insert("first word", 2);
@@ -86,22 +83,38 @@ public abstract class BinaryHeapTest {
 		while (!(toTest.isEmpty())) {
 			actual += toTest.deleteMin() + ", "; 
 		}
-		boolean five = (actual.equals("first word, second word, ");
+		boolean five = (actual.equals("first word, second word, "));
 		
 		return (one && two && three && four && five); 
 	}
 	
 	public boolean testMany(BinaryHeap toTest){
 		//TODO write a test case that tests functionality for all of the functions applicable to a BinaryHeap when it has many elements
-		
+		//Add the elements to the BinaryHeap in this function, toTest should be empty when it is called.
+                toTest.insert("first word", 2);
+                toTest.insert("second word", 3);
+                toTest.insert("third word", 1);
+                toTest.insert("fourth word", 20);
+                toTest.insert("fifth word", 12);
+                toTest.insert("sixth word", 3);
+                toTest.insert("seventh word", 15);
+                toTest.insert("eighth word", 7);
+                toTest.insert("ninth word", 8);
+                toTest.insert("tenth word", 4);
+                
 		//isEmpty()
+		boolean one = !(toTest.isEmpty());
 		//size()
+		boolean two = (toTest.size() == 10);
+		//findMin()
+		String min = toTest.findMin();
+		boolean three = (min.equals("third word"));
+                
 		//insert(String data, int priority)
 		//findMin()
 		//deleteMin()
 		//changePriority(String data, int priority)
-		
-		//Add the elements to the BinaryHeap in this function, toTest should be empty when it is called.
+	
 		//You may find writing helper tests to be useful
 		//This should return true if it passes your tests, false otherwise
 		return false;

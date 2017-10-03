@@ -182,7 +182,7 @@ public class BinaryHeap implements PriorityQueue{
 			
 			
 			//SWAP down till it is in the correct position
-			if ((2i <= size) && (newPri > heap[2i].getPriority())) {
+			if ((2 * i <= size) && (newPri > heap[2 * i].getPriority())) {
 				int updatedIndex = percolateDown(i, newPri);
 				heap[updatedIndex] = new HeapData(data, newPri);
 			}

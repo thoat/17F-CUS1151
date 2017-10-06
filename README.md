@@ -36,3 +36,11 @@ Thu, 2017.09.28:
   * default constructor and user-defined constructor. We set default length to 16.
   * `isEmpty()`, `size()`, `findMin()`, `makeEmpty()`, `insert()`, `deleteMin()`, and `changePriority()`. 
 * We have not touched on the Test class yet. 
+
+Mon, 2017.10.02:
+* We started implementing the body of `testEmpty()` and `testOne()`.
+* We also added the missing code (the "swap") inside the body of `BinaryHeap.changePriority`.
+
+Tue, 2017.10.03:
+* We augmented the methods `testEmpty()` and `testOne()`. 
+* We also started implementing the body of `testMany()`. However, it's still currently incomplete code.

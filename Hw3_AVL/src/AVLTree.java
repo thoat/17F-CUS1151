@@ -1,39 +1,63 @@
 import java.util.Iterator;
 
 public class AVLTree implements StringTree{
-	
+
 	private class AVLNode{
 		//Do not change these variable names
 		String key;
 		String value;
 		AVLNode left;
 		AVLNode right;
+                int height;
 		
 		//Place any additional fields you need here
 			
 		//TODO implement the node class here
+                public AVLNode(String k, String v) {
+                    key = k;
+                    value = v;
+                    left = null;
+                    right = null;
+                    height = 0;
+                }
 	}
 	
 	//Use this variable as your root
 	AVLNode root;
+        int size;
 	
 	//You may use any additional fields here as you see fit
 	
 	public void makeEmpty() {
-		// TODO Remove all elements from the AVL tree.
                 root = null;
 	}
 	
 	public int size() {
-		// TODO Return the number of elements currently in the tree.
-		return 10;
+		return size;
 	}
 
 	public void insert(String key, String value) {
 		// TODO Insert the <key,value> pair into the AVLTree
 		// Throw an IllegalArgumentException if the client attempts to insert a duplicate key
+                AVLNode aNode = new AVLNode(key, value);
+                insert(aNode, root);
 		
 	}
+        
+        private void insert(AVLNode aNode, AVLNode currPosition) {
+        if (currPosition == null) {
+            currPosition = aNode;
+            size++;
+        }
+        else if (currPosition.key.compareTo(aNode.key) < 0) {  //if currentNode is smaller than the new node, go to the right
+            insert(aNode, currPosition.right);
+        }
+        else if (currPosition.key.compareTo(aNode.key) > 0) {  //if currentNode is greater than the new node, go to the left
+            insert(aNode, currPosition.left);
+        }
+        else //if duplicate
+            throw new IllegalArgumentException("Duplicate key!");
+    }
 
 	public String find(String key) {
 		// TODO Return the value affiliated with the String key.

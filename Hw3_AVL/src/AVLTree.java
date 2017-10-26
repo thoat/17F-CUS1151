@@ -166,8 +166,8 @@ public class AVLTree implements StringTree{
                         int rh = height(root.right);
                         
                         if(lh > rh)
-                            return(lh +1);
-                        else return(rh +1);
+                            return(lh + 1);
+                        else return(rh + 1);
                     }
                 }
 	}

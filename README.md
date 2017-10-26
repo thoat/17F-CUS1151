@@ -9,9 +9,12 @@ Sun, 2017.10.21:
 * We added a `size` instance variable for `AVLTree` class.
 * We filled in the bodies of the following methods in `AVLTree` class: `size()`, `makeEmpty()`, and `insert()`. The `insert()` method requires a helper method. **Note: we haven't checked and restored tree balance though.**
 
-Thu, 2017.10.27: *TODO
+Wed, 2017.10.25:
+* Filled in body for `find()` and a bit of `getBFSIterator`.
+
+*TODO*
  * check for and maintain balance in `insert()`
- * fill in body for `find()` and (optional) `getBFSIterator` and (optional) AVLTest*
+ * fill in body for `find()` and (optional) `getBFSIterator` and (optional) AVLTest
 
 ## Homework: Project 2
 We started on Thursday, 2017.09.28.

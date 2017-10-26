@@ -17,8 +17,7 @@ public class AVLTree implements StringTree{
 		//Place any additional fields you need here
 			
 		//TODO implement the node class here
-                public AVLNode(String k, String v) 
-                {
+                public AVLNode(String k, String v) {
                     key = k;
                     value = v;
                     left = null;

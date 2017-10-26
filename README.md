@@ -7,14 +7,17 @@ We started on Sunday, 2017.10.21
 Sun, 2017.10.21:
 * We added a `height` instance variable, as well as a constructor for the `AVLNode` class.
 * We added a `size` instance variable for `AVLTree` class.
-* We filled in the bodies of the following methods in `AVLTree` class: `size()`, `makeEmpty()`, and `insert()`. The `insert()` method requires a helper method. **Note: we haven't checked and restored tree balance though.**
+* We filled in the bodies of the following methods in `AVLTree` class: `size()`, `makeEmpty()`, and `insert()`. The `insert()` method requires a helper method.
 
 Wed, 2017.10.25:
 * Filled in body for `find()` and a bit of `getBFSIterator`.
 
+Thu, 2017.10.26:
+* Finished up methods inside AVLTree, including `insert()` and `getBFSIterator()`
+* Attempted AVLTester
+
 *TODO*
- * check for and maintain balance in `insert()`
- * fill in body for `find()` and (optional) `getBFSIterator` and (optional) AVLTest
+ * Figure out JUnit in NetBeans IDE and complete AVLTester
 
 ## Homework: Project 2
 We started on Thursday, 2017.09.28.

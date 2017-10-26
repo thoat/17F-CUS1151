@@ -14,11 +14,11 @@ public class AVLTree implements StringTree{
 			
 		//TODO implement the node class here
                 public AVLNode(String k, String v) {
-                    key = k;
-                    value = v;
-                    left = null;
-                    right = null;
-                    height = 0;
+                        key = k;
+                        value = v;
+                        left = null;
+                        right = null;
+                        height = 0;
                 }
 	}
 	
@@ -37,26 +37,38 @@ public class AVLTree implements StringTree{
 	}
 
 	public void insert(String key, String value) {
-		// TODO Insert the <key,value> pair into the AVLTree
-		// Throw an IllegalArgumentException if the client attempts to insert a duplicate key
                 AVLNode aNode = new AVLNode(key, value);
                 insert(aNode, root);
 		
 	}
         
+        private void checkBalance(AVLNode currPosition) {
+                if (currPosition.left.height - currPosition.right.height > 1) {
+                    //not balance, left is too tall, have to switch
+                }
+                else if (currPosition.left.height - currPosition.right.height < -1) {
+                    //not balance, right is too tall, have to switch
+                }
+                else
+                    return;
+        }
+
         private void insert(AVLNode aNode, AVLNode currPosition) {
-        if (currPosition == null) {
-            currPosition = aNode;
-            size++;
+                if (currPosition == null) {
+                        currPosition = aNode;
+                        size++;
+                        checkBalance(currPosition);
         }
-        else if (currPosition.key.compareTo(aNode.key) < 0) {  //if currentNode is smaller than the new node, go to the right
-            insert(aNode, currPosition.right);
-        }
-        else if (currPosition.key.compareTo(aNode.key) > 0) {  //if currentNode is greater than the new node, go to the left
-            insert(aNode, currPosition.left);
-        }
-        else //if duplicate
-            throw new IllegalArgumentException("Duplicate key!");
+                else if (currPosition.key.compareTo(aNode.key) < 0) {  //if currentNode is smaller than the new node, go to the right
+                        currPosition.height++;
+                        insert(aNode, currPosition.right);
+                }
+                else if (currPosition.key.compareTo(aNode.key) > 0) {  //if currentNode is greater than the new node, go to the left
+                        currPosition.height++;
+                        insert(aNode, currPosition.left);
+                }
+                else //if duplicate
+                        throw new IllegalArgumentException("Duplicate key!");
     }
 
 	public String find(String key) {

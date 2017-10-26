@@ -2,11 +2,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class AVLTree implements StringTree{
+public class AVLTree implements StringTree {
 
     
-	private class AVLNode
-        {
+	private class AVLNode {
 		//Do not change these variable names
 		String key;
 		String value;

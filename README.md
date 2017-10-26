@@ -1,6 +1,36 @@
 # 17F-CUS1151
 Platform to do pair programming for this course' projects
 
+## Homework: Project 3
+We started on Sunday, 2017.10.21
+
+Sun, 2017.10.21:
+* We added a `height` instance variable, as well as a constructor for the `AVLNode` class.
+* We added a `size` instance variable for `AVLTree` class.
+* We filled in the bodies of the following methods in `AVLTree` class: `size()`, `makeEmpty()`, and `insert()`. The `insert()` method requires a helper method. **Note: we haven't checked and restored tree balance though.**
+
+Thu, 2017.10.27: *TODO
+ * check for and maintain balance in `insert()`
+ * fill in body for `find()` and (optional) `getBFSIterator` and (optional) AVLTest*
+
+## Homework: Project 2
+We started on Thursday, 2017.09.28.
+
+Thu, 2017.09.28:
+* We added 2 more methods to private class `HeapData`: method `getData()` and method `getPriority()`.
+* We filled in the body for:
+  * default constructor and user-defined constructor. We set default length to 16.
+  * `isEmpty()`, `size()`, `findMin()`, `makeEmpty()`, `insert()`, `deleteMin()`, and `changePriority()`. 
+* We have not touched on the Test class yet. 
+
+Mon, 2017.10.02:
+* We started implementing the body of `testEmpty()` and `testOne()`.
+* We also added the missing code (the "swap") inside the body of `BinaryHeap.changePriority`.
+
+Tue, 2017.10.03:
+* We augmented the methods `testEmpty()` and `testOne()`. 
+* We also started implementing the body of `testMany()`. However, it's still currently incomplete code.
+
 ## Homework: Project 1
 We started on Thursday, 2017.09.07.
 
@@ -27,20 +57,3 @@ Tue, 2017.09.19:
 * Questions 2,3,4 done
 * Revised all question answers and submitted.
 
-## Homework: Project 2
-We started on Thursday, 2017.09.28.
-
-Thu, 2017.09.28:
-* We added 2 more methods to private class `HeapData`: method `getData()` and method `getPriority()`.
-* We filled in the body for:
-  * default constructor and user-defined constructor. We set default length to 16.
-  * `isEmpty()`, `size()`, `findMin()`, `makeEmpty()`, `insert()`, `deleteMin()`, and `changePriority()`. 
-* We have not touched on the Test class yet. 
-
-Mon, 2017.10.02:
-* We started implementing the body of `testEmpty()` and `testOne()`.
-* We also added the missing code (the "swap") inside the body of `BinaryHeap.changePriority`.
-
-Tue, 2017.10.03:
-* We augmented the methods `testEmpty()` and `testOne()`. 
-* We also started implementing the body of `testMany()`. However, it's still currently incomplete code.

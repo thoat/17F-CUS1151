@@ -5,7 +5,7 @@ public abstract class AVLTester {
 		// TODO Return true if toTest is an AVL implementation of a String tree and false otherwise. 
 		// All StringTree interface methods must behave correctly
 		// You may assume that size() and isEmpty() return the correct values
-		// O            `                           ther than this, do not assume anything about the tree toTest, including its start size.
+		// Other than this, do not assume anything about the tree toTest, including its start size.
                 
                 //makeEmpty();
                 //insert(String key, String value);
